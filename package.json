@@ -1,6 +1,6 @@
 {
   "name": "astral-angular-annotate",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "AngularJS DI annotation pass for astral",
   "main": "annotate.js",
   "scripts": {
