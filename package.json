@@ -1,0 +1,24 @@
+{
+  "name": "astral-angular-annotate",
+  "version": "0.0.0",
+  "description": "AngularJS DI annotation pass for astral",
+  "main": "annotate.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/btford/astral-angular-annotate.git"
+  },
+  "keywords": [
+    "astral",
+    "angular"
+  ],
+  "author": "Brian Ford",
+  "license": "MIT",
+  "readmeFilename": "README.md",
+  "dependencies": {
+    "astral-pass": "~0.1.0",
+    "clone": "~0.1.9"
+  }
+}
