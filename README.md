@@ -6,7 +6,7 @@ For a tool CLI, see `[ngmin](TODO: link).
 
 ## Usage
 
-Below is an example parsing, annotating, and generating JavaScript code. Note that this requires the `esprima`, `escodegen`, `astral`, and `astral-angular-annotator` npm packages.
+Below is an example parsing, annotating, and generating JavaScript code. Note that this requires the `esprima`, `escodegen`, `astral`, and `astral-angular-annotate` npm packages.
 
 ```javascript
 var esprima = require('esprima'),
@@ -14,7 +14,7 @@ var esprima = require('esprima'),
   astral = require('astral')();
 
 // register angular annotator pass
-require('astral-angular-annotator')(astral);
+require('astral-angular-annotate')(astral);
 
 var inputCode = "angular.module('myMod').controller('FooCtrl', function ($scope) {" +
 "  // ..." +
