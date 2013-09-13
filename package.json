@@ -20,5 +20,11 @@
   "dependencies": {
     "astral-pass": "~0.1.0",
     "clone": "~0.1.9"
+  },
+  "devDependencies": {
+    "should": "~1.2.2",
+    "esprima": "~1.0.3",
+    "escodegen": "0.0.25",
+    "astral": "~0.1.0"
   }
 }
