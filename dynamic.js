@@ -72,9 +72,20 @@ global.angular = (function() {
 
   var module = {
     controller: mock,
-    directive: mock,
+
+    directive: function (name, fn) {
+      mock(name, fn);
+      if (typeof fn === 'function') {
+        var controller = (new fn()).controller;
+        if (controller && typeof controller === 'function') {
+          mock(null, controller);
+        }
+      }
+    },
+
     filter: mock,
     service: mock,
+    factory: mock,
 
     constant: function () { return module; },
     value: function () { return module; },

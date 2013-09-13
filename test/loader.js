@@ -4,12 +4,13 @@
  */
 
 var assert = require('should');
+var dynamic = require('../dynamic');
 
 // so we don't have to put the stuff we're testing into a string
 var stringifyFunctionBody = require('./util').stringifyFunctionBody;
+var normalize = require('./util').normalize;
 var annotate = function (arg) {
-  return require('../main').annotate(
-    stringifyFunctionBody(arg));
+  return normalize(dynamic(stringifyFunctionBody(arg)));
 };
 
 
@@ -17,6 +18,7 @@ describe('annotate', function () {
 
   it('should annotate modules inside of loaders', function () {
     var annotated = annotate(function () {
+      var define = function (a, b) { b(); };
       define(["./thing"], function(thing) {
         angular.module('myMod', []).
           controller('MyCtrl', function ($scope) {});
@@ -24,6 +26,7 @@ describe('annotate', function () {
     });
 
     annotated.should.equal(stringifyFunctionBody(function () {
+      var define = function (a, b) { b(); };
       define(["./thing"], function(thing) {
         angular.module('myMod', []).
           controller('MyCtrl', ['$scope', function ($scope) {}]);
@@ -33,8 +36,7 @@ describe('annotate', function () {
 
   it('should annotate module refs inside of loaders', function () {
     var annotated = annotate(function () {
-
-
+      var define = function (a, b) { b(); };
       define(["./thing"], function(thing) {
         var myMod = angular.module('myMod', []);
         myMod.controller('MyCtrl', function ($scope) {});
@@ -44,6 +46,7 @@ describe('annotate', function () {
     });
 
     annotated.should.equal(stringifyFunctionBody(function () {
+      var define = function (a, b) { b(); };
       define(["./thing"], function(thing) {
         var myMod = angular.module('myMod', []);
         myMod.controller('MyCtrl', ['$scope', function ($scope) {}]);
