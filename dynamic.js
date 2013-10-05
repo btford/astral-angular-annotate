@@ -3,6 +3,10 @@
 global.angular = (function() {
   'use strict';
 
+  function createStack () {
+    return (new Error()).stack;
+  }
+
   var FN_ARGS = /^function\s*[^\(]*\(\s*([^\)]*)\)/m;
   var FN_ARG_SPLIT = /,/;
   var FN_ARG = /^\s*(_?)(\S+?)\1\s*$/;
