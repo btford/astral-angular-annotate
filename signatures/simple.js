@@ -29,7 +29,7 @@ module.exports = [
     },
     "property": {
       "type": "Identifier",
-      "name": /^(controller|directive|filter|service|factory|decorator|provider)$/
+      "name": /^(controller|directive|filter|service|factory|decorator|provider|animation)$/
     }
   },
   "arguments": [
