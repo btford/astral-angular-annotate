@@ -50,6 +50,29 @@ routeAnnotatorPass.run = function (ast, info) {
       }], function (controllerChunk) {
         controllerChunk.value = annotateInjectable(controllerChunk.value);
       });
+
+      deepApply(whenChunk, [{
+        "type": "Property",
+        "key": {
+          "type": "Identifier",
+          "name": "resolve"
+        },
+        "value": {
+          "type": "ObjectExpression"
+        }
+      }], function (resolveChunk) {
+        deepApply(resolveChunk, [{
+          "type": "Property",
+          "key": {
+            "type": "Identifier"
+          },
+          "value": {
+            "type": "FunctionExpression"
+          }
+        }], function (resolveIdentifierChunk) {
+          resolveIdentifierChunk.value = annotateInjectable(resolveIdentifierChunk.value);
+        });
+      });
     });
   });
 };
